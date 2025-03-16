@@ -1,0 +1,17 @@
+name: Simple CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main  # Runs when you push to the main branch
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest  # Runs on GitHub’s Ubuntu runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Downloads your code into the runner
+
+      - name: Run Hello Script
+        run: echo "Hello, CI/CD! 🚀"  # Prints a message
