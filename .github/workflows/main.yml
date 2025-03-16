@@ -1,17 +1,29 @@
 name: Simple CI/CD Workflow
 
 on:
-  push:
+  pull_request:
     branches:
-      - main  # Runs when you push to the main branch
-
+      - main
 jobs:
-  say-hello:
-    runs-on: ubuntu-latest  # Runs on GitHub’s Ubuntu runner
+  environment:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3  # Downloads your code into the runner
+    - name: Checking Repo
+      uses: actions/checkout@v3
+      
+    - name: Hello World!
+      run: echo "Welcome to the World of CI/CD!"
+      
+    - name : Connecting you with Devops Engineer........
+      run: echo "Connecting you with Devops Engineer........"
+      
+    - name : Connecting you with Devops Engineer........
+      run: echo "Please wait while we're connecting you........"
 
-      - name: Run Hello Script
-        run: echo "Hello, CI/CD! 🚀"  # Prints a message
+
+    - name : Connected with Devops Engineer........
+      run: echo "Connected with the Devops Engineer"
+
+    - name : Haseeb the senior Devops Engineer
+      run: echo "Hey, Welcome to Github Actions, This is Haseeb the Senior Devops Engineer!"
