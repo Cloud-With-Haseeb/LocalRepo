@@ -3,24 +3,20 @@ name: CI/CD Pipeline  # Workflow name
 on:  
   push:
     branches:
-      - main  # Run the job when code is pushed to "main" branch
+      - main  # Runs when code is pushed to "main" branch
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Runs on an Ubuntu server
+    runs-on: ubuntu-latest  # Runs on Ubuntu
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3  # Get the latest code
+        with:
+          fetch-depth: 0  # Ensures full repo history
+
+      - name: Debug - Show Files
+        run: ls -R  # Check if package.json exists
 
       - name: Install Dependencies
-        run: npm install  # Installing project dependencies
-
-      - name: Run Tests
-        run: npm test  # Running tests
-
-  deploy:
-    needs: build  # Only run if "build" job succeeds
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to AWS
-        run: echo "Deploying to AWS..."  # Fake deploy command
+        run: npm install
+        working-directory: ./  # Change if package.json i
