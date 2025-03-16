@@ -1,22 +1,17 @@
-name: CI/CD Pipeline  # Workflow name
+name: Simple CI/CD Workflow
 
-on:  
+on:
   push:
     branches:
-      - main  # Runs when code is pushed to "main" branch
+      - main  # Runs when you push to the main branch
 
 jobs:
-  build:
-    runs-on: ubuntu-latest  # Runs on Ubuntu
+  say-hello:
+    runs-on: ubuntu-latest  # Runs on GitHub’s Ubuntu runner
+
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3  # Get the latest code
-        with:
-          fetch-depth: 0  # Ensures full repo history
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Downloads your code into the runner
 
-      - name: Debug - Show Files
-        run: ls -R  # Check if package.json exists
-
-      - name: Install Dependencies
-        run: npm install
-        working-directory: ./  # Change if package.json i
+      - name: Run Hello Script
+        run: echo "Hello, CI/CD! 🚀"  # Prints a message
